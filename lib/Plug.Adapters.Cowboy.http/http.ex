@@ -1,6 +1,10 @@
 defmodule ElixirPlugExamples.HttpPlug do
   import Plug.Conn
 
+  def start do
+    {:ok, _pid} = Plug.Adapters.Cowboy.http __MODULE__, [], port: 9001
+  end
+
   def init(opts) do
     opts
   end
@@ -12,5 +16,4 @@ defmodule ElixirPlugExamples.HttpPlug do
   end
 end
 
-#Plug.Adapters.Cowboy.http ElixirPlugExamples.HttpPlug, [], port: 10080
-#:timer.sleep(:infinity)
+#mix run --no-halt -e ElixirPlugExamples.HttpPlug.start

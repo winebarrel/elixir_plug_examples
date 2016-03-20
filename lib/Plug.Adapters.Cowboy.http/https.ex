@@ -1,6 +1,16 @@
 defmodule ElixirPlugExamples.HttpsPlug do
   import Plug.Conn
 
+  def start do
+    cowboy_options = [
+      keyfile: Path.join([__DIR__, "server.key"]),
+      certfile: Path.join([__DIR__, "server.crt"]),
+      port: 9001
+    ]
+
+    {:ok, _pid} = Plug.Adapters.Cowboy.https __MODULE__, [], cowboy_options
+  end
+
   def init(opts) do
     opts
   end
@@ -12,5 +22,4 @@ defmodule ElixirPlugExamples.HttpsPlug do
   end
 end
 
-#Plug.Adapters.Cowboy.https ElixirPlugExamples.HttpsPlug, [], keyfile: Path.join([__DIR__, "server.key"]), certfile: Path.join([__DIR__, "server.crt"]), port: 10080
-#:timer.sleep(:infinity)
+#mix run --no-halt -e ElixirPlugExamples.HttpsPlug.start
