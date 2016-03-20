@@ -1,9 +1,8 @@
-defmodule ElixirPlugExamples.CSRFProtectionPlug do
+defmodule ElixirPlugExamples.SessionPlug do
   use Plug.Builder
 
   plug Plug.Session, store: :ets, key: "_my_app_session", table: :session
-  plug :fetch_session
-  plug Plug.CSRFProtection
+  plug :fetch_session # required
   plug :resp
 
   def start do
@@ -13,10 +12,14 @@ defmodule ElixirPlugExamples.CSRFProtectionPlug do
   end
 
   def resp(conn, _opts) do
+    count = get_session(conn, :counter) || 0
+
     conn
+    |> put_session(:counter, count + 1)
     |> put_resp_content_type("text/plain")
-    |> send_resp(200, Plug.CSRFProtection.get_csrf_token)
+    |> send_resp(200, Integer.to_string(count))
   end
 end
 
-#mix run --no-halt -e ElixirPlugExamples.CSRFProtectionPlug.start
+#mix run --no-halt -e ElixirPlugExamples.SessionPlug.start
+# FIXME: ２ずつ増えるんですけど…
