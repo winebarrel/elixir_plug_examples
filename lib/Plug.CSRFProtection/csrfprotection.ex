@@ -1,4 +1,4 @@
-defmodule ElixirPlugExamples.CSRFProtection do
+defmodule ElixirPlugExamples.CSRFProtectionPlug do
   use Plug.Builder
 
   # FIXME: Not work!
@@ -19,4 +19,4 @@ defmodule ElixirPlugExamples.CSRFProtection do
   end
 end
 
-#mix run --no-halt -e ElixirPlugExamples.CSRFProtection.start
+#mix run --no-halt -e ElixirPlugExamples.CSRFProtectionPlug.start

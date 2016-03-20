@@ -1,4 +1,4 @@
-defmodule ElixirPlugExamples.Builder do
+defmodule ElixirPlugExamples.BuilderPlug do
   use Plug.Builder
 
   plug :hello
@@ -39,4 +39,4 @@ defmodule ElixirPlugExamples.Builder do
   end
 end
 
-#mix run --no-halt -e ElixirPlugExamples.Builder.start
+#mix run --no-halt -e ElixirPlugExamples.BuilderPlug.start
