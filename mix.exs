@@ -27,6 +27,7 @@ defmodule ElixirPlugExamples.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [{:cowboy, "~> 1.0.0"},
+     {:plug, "~> 1.1.2"}]
   end
 end
