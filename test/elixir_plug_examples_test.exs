@@ -1,8 +1,14 @@
 defmodule ElixirPlugExamplesTest do
-  use ExUnit.Case
-  doctest ElixirPlugExamples
+  use ExUnit.Case, async: true
+  use Plug.Test
 
-  test "the truth" do
-    assert 1 + 1 == 2
+  alias ElixirPlugExamples.HttpPlug
+
+  test "puts session cookie" do
+    conn = conn(:get, "/")
+    conn = ElixirPlugExamples.HttpPlug.call(conn, [])
+    assert conn.resp_body == "xHello world"
   end
 end
+
+#mix test
