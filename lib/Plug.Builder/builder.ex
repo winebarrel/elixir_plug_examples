@@ -3,13 +3,14 @@ defmodule ElixirPlugExamples.Builder do
 
   plug :hello
   plug :world
+  plug :append, "Zzz"
   plug :resp
 
   def start do
     {:ok, _pid} = Plug.Adapters.Cowboy.http __MODULE__, [], port: 9001
   end
 
-  # Override
+  # Override Plug.Conn.init()
   def init(opts) do
     IO.inspect opts
   end
@@ -23,6 +24,11 @@ defmodule ElixirPlugExamples.Builder do
 
   def world(conn, _opts) do
     msg = conn.assigns[:msg] <> " world"
+    conn |> assign(:msg, msg)
+  end
+
+  def append(conn, opts) do
+    msg = conn.assigns[:msg] <> opts
     conn |> assign(:msg, msg)
   end
 
