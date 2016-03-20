@@ -1,7 +1,7 @@
 defmodule ElixirPlugExamples.ParsersPlug do
   use Plug.Builder
 
-  plug Plug.Parsers, parsers: [:urlencoded, :multipart, :json],  json_decoder: Poison
+  plug Plug.Parsers, parsers: [:urlencoded, :multipart, :json], json_decoder: Poison
   plug :resp
 
   def start do
