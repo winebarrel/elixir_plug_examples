@@ -16,6 +16,13 @@
 
 ## https://github.com/winebarrel/elixir\_plug\_examples
 
+```sh
+git clone ...
+cd elixir_plug_examples
+mix deps.get
+mix run --no-halt -e ElixirPlugExamples.HttpPlug.start
+```
+
 ---
 # Plugとは
 
