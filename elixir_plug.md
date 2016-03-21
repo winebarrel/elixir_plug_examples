@@ -137,8 +137,7 @@ Plug.Adapters.Cowboy.https ElixirPlugExamples.HttpsPlug, [], [
 ---
 # Plug.Adapters.Translator
 * Plugの特定のエラーメッセージのフォーマットを変更
-  * ライブラリ内で利用
-* なぜPlug.Adapters配下にあるのか…
+* ライブラリ内で利用
 
 ```elixir
 Logger.error ['Ranch listener XXX',
