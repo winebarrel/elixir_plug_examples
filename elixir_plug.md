@@ -388,6 +388,9 @@ defmodule ElixirPlugExamples.HeadPlug do
   end
 end
 ```
+```sh
+curl -XHEAD http://localhost:9001
+```
 
 ---
 # Plug.Logger
