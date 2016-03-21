@@ -32,11 +32,6 @@ defmodule ElixirPlugExamples.RouterPlug do
   #  send_resp(conn, 200, "hello world")
   #end
 
-  # FIXME; Not work! why?
-  #defp match("GET", ["foo", "bar"], conn) do
-  #  send_resp(conn, 200, "hello world")
-  #end
-
   match _ do
     send_resp(conn, 404, "oops")
   end
